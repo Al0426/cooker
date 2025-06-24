@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiceCooker Premium - Panci Listrik Serbaguna & Elegan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Reset & Basic Setup --- */
+        :root {
+            --color-primary: #c5a572; /* Gold Accent */
+            --color-dark: #1a1a1a;
+            --color-light: #f5f5f5;
+            --color-secondary: #333333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.7;
+        }
+
+        /* --- Global Styles --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* --- Animations (AOS - Animate On Scroll) --- */
+        [data-aos] {
+            opacity: 0;
+            transition-property: transform, opacity;
+        }
+        [data-aos="fade-up"] {
+            transform: translateY(50px);
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-image: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), url('https://m.media-amazon.com/images/I/51dWHq4gfuL._AC_.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin: 20px 0 40px;
+            font-weight: 300;
+        }
+
+        /* --- Value Proposition Section --- */
+        .value-prop {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--color-secondary);
+        }
+        .value-prop h2 {
+            font-size: 1.8rem;
+        }
+        .value-prop p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- Benefits Section --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: var(--color-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--color-primary);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            fill: var(--color-primary);
+        }
+        
+        /* --- Gallery Section --- */
+        .gallery {
+            background: var(--color-dark);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 50px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* --- Testimonials Section --- */
+        .testimonials {
+            background-color: var(--color-secondary);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background-color: var(--color-dark);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--color-primary);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* --- Urgency/Final CTA Section --- */
+        .urgency {
+            text-align: center;
+        }
+        .urgency h2 {
+            font-size: 2.5rem;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .timer-box {
+            background: var(--color-secondary);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+            border: 1px solid var(--color-primary);
+        }
+        .timer-box span {
+            display: block;
+        }
+        .timer-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-light);
+        }
+        .timer-label {
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+        }
+        .urgency-text {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        
+        /* --- Sticky Bottom Banner --- */
+        .sticky-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-dark);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            border-top: 2px solid var(--color-primary);
+        }
+        .price-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .selling-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        .normal-price {
+            font-size: 1rem;
+            text-decoration: line-through;
+            color: #999;
+        }
+        .banner-button {
+            background-color: var(--color-primary);
+            color: var(--color-dark);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--color-dark);
+            margin-bottom: 120px; /* Space for sticky banner */
+        }
+
+        /* --- Responsive Design (Mobile First) --- */
+        @media (max-width: 767px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .hero { height: auto; padding: 100px 0; }
+            .countdown-timer { gap: 10px; }
+            .timer-box { min-width: 70px; padding: 10px; }
+            .timer-value { font-size: 1.8rem; }
+            .sticky-banner { flex-direction: column; gap: 10px; }
+            footer { margin-bottom: 150px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a id="order-link" href="https://emma.orderonline.id/electric-cooker" target="_self" style="display:none;"></a>
+
+    <header class="hero">
+        <div class="container hero-content" data-aos="fade-up">
+            <h1>Elegan, Cepat, Serbaguna.</h1>
+            <p class="tagline">Panci Listrik Serbaguna hanya dengan satu alat, masak jadi gampang banget! Mengukus, merebus, memasak mie, membuat hot pot bersama keluarga hingga memanaskan makanan jadi gampang banget loh! Panci ini juga cocok buat anak kost yang nggak mau ribet! desainnya minimalis memiliki berbagai fungsi dalam satu alat!</p>
+            <a href="#order" class="cta-button">Pesan Sekarang & Dapatkan Diskon 50%</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="value-prop">
+            <div class="container" data-aos="fade-up">
+                <h2>Ubah Cara Anda Memasak Setiap Hari</h2>
+                <p>Hadirkan kemewahan dan kepraktisan di dapur Anda. RiceCooker Premium dirancang untuk gaya hidup modern masyarakat Indonesia yang dinamis. Satu sentuhan untuk berbagai hidangan lezat, dari sarapan cepat hingga makan malam istimewa bersama keluarga.</p>
+            </div>
+        </section>
+
+        <section id="benefits" class="benefits">
+            <div class="container">
+                <h2 data-aos="fade-up">Mengapa Ini Pilihan Terbaik?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v2H8v2h8v-2h-3v-2h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 16V5h16l.002 11H4z"/><path d="M6 12h4v2H6zm6 0h4v2h-4zm-3-4h2v2H9z"/></svg>
+                        <h3>Satu Alat, Ragam Fungsi</h3>
+                        <p>Mengukus, merebus, menggoreng ringan, menumis, hingga membuat shabu-shabu. Hemat tempat dan uang.</p>
+                    </div>
+                    <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.233 1.25 2.455 4.972 5.485.797a.5.5 0 0 1 .277.853l-3.97 3.868.938 5.464a.5.5 0 0 1-.726.527L12 15.228l-4.907 2.58a.5.5 0 0 1-.726-.527l.938-5.464-3.97-3.868a.5.5 0 0 1 .277-.853l5.485-.797L11.233 1.25A.5.5 0 0 1 12 1a.5.5 0 0 1 .767.25z"/></svg>
+                        <h3>Desain Mewah & Minimalis</h3>
+                        <p>Tampilan elegan dengan gagang panjang yang kokoh, mempercantik dapur Anda sekaligus fungsional.</p>
+                    </div>
+                    <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/><path d="m12.001 8-3 3 1.414 1.414L12 10.829l1.586 1.585L15 10.999l-3-2.999zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+                        <h3>Lapisan Anti-Lengket Premium</h3>
+                        <p>Masak lebih sehat dengan sedikit minyak. Membersihkannya pun sangat mudah, cukup dilap saja.</p>
+                    </div>
+                    <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 18v-2h-2v2H9v-2.07a3.974 3.974 0 0 1-2.42-3.414A3.997 3.997 0 0 1 10.5 8.5H13V6h-2V4h2V2h2v2h2v2h-2v2.5h-1.5a2.498 2.498 0 0 0-2.078 3.873A3.972 3.972 0 0 1 15 15.93V18h-2zm-1.5-6.5h-1a2.5 2.5 0 0 0 0 5h1a2.5 2.5 0 0 0 0-5z"/></svg>
+                        <h3>Praktis & Hemat Energi</h3>
+                        <p>Pemanasan cepat dan merata dengan daya yang efisien. Solusi ideal untuk gaya hidup yang sibuk.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="container">
+                <h2 data-aos="fade-up">Lihat Detail Kemewahannya</h2>
+                <div class="gallery-grid">
+                    <img src="https://m.media-amazon.com/images/I/61YfleO09EL._AC_.jpg" alt="Panci listrik dari samping" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://m.media-amazon.com/images/I/618RToV8+0L._AC_.jpg" alt="Panci listrik dengan kukusan" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://m.media-amazon.com/images/I/61JCeU358OL._AC_.jpg" alt="Tutup panci listrik" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://m.media-amazon.com/images/I/51dWHq4gfuL._AC_.jpg" alt="Panci listrik tampak depan" data-aos="fade-up" data-aos-delay="400">
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2 data-aos="fade-up">Apa Kata Mereka?</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                        <p>"Praktis banget buat anak kost seperti saya. Masak mie, sup, nasi, semua bisa. Desainnya juga cantik!"</p>
+                        <span class="author">Rina S., Jakarta</span>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                        <p>"Saya beli untuk istri, ternyata dia suka sekali. Panasnya cepat dan stabil. Membersihkannya juga gampang."</p>
+                        <span class="author">Bapak Hartono, Surabaya</span>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                        <p>"Awalnya ragu, tapi setelah coba, ini panci listrik terbaik. Sering saya pakai untuk shabu-shabu keluarga."</p>
+                        <span class="author">Ayu P., Bandung</span>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                        <p>"Cocok buat kado! Kualitasnya terasa premium, beda dari yang biasa di pasaran. Sangat direkomendasikan."</p>
+                        <span class="author">Dewi K., Medan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="order" class="urgency">
+            <div class="container">
+                <h2 data-aos="fade-up">Jangan Sampai Kehabisan!</h2>
+                <p data-aos="fade-up" class="urgency-text">Penawaran Spesial dengan Diskon 50% akan berakhir dalam:</p>
+                <div class="countdown-timer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timer-box">
+                        <span id="days" class="timer-value">00</span>
+                        <span class="timer-label">Hari</span>
+                    </div>
+                    <div class="timer-box">
+                        <span id="hours" class="timer-value">00</span>
+                        <span class="timer-label">Jam</span>
+                    </div>
+                    <div class="timer-box">
+                        <span id="minutes" class="timer-value">00</span>
+                        <span class="timer-label">Menit</span>
+                    </div>
+                    <div class="timer-box">
+                        <span id="seconds" class="timer-value">00</span>
+                        <span class="timer-label">Detik</span>
+                    </div>
+                </div>
+                <p data-aos="fade-up" class="urgency-text">Dapatkan panci listrik multifungsi ini sekarang juga dan nikmati kemudahan memasak setiap hari!</p>
+                <a href="#order-link" onclick="document.getElementById('order-link').click(); return false;" class="cta-button" data-aos="fade-up" data-aos-delay="200">Pesan Milik Anda Sekarang!</a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 RiceCooker Premium. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="sticky-banner">
+        <div class="price-info">
+            <span class="selling-price">Rp 222.000</span>
+            <span class="normal-price">Rp 333.000</span>
+        </div>
+        <a href="#order-link" onclick="document.getElementById('order-link').click(); return false;" class="banner-button">
+            PESAN SEKARANG
+        </a>
+    </div>
+
+    <script>
+        // --- AOS (Animate On Scroll) Initialization ---
+        // Simple embedded version of AOS
+        const aos_init = () => {
+            const aos_elements = document.querySelectorAll('[data-aos]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('aos-animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            aos_elements.forEach(el => {
+                observer.observe(el);
+            });
+        };
+        
+        // --- Countdown Timer Logic ---
+        const countdown = () => {
+            // Set target date to 24 hours from now
+            const countDate = new Date().getTime() + (24 * 60 * 60 * 1000);
+            
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countDate - now;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById('days').innerText = "00";
+                    document.getElementById('hours').innerText = "00";
+                    document.getElementById('minutes').innerText = "00";
+                    document.getElementById('seconds').innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        };
+
+        // --- Smooth Scrolling for anchor links ---
+        const smoothScroll = () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                if(anchor.getAttribute('href') === "#order-link") return; // Exclude order link
+                
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        };
+        
+        // Run scripts when document is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            aos_init();
+            countdown();
+            smoothScroll();
+        });
+
+    </script>
+</body>
+</html>
